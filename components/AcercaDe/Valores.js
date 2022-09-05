@@ -8,8 +8,6 @@ import Divider from "@material-ui/core/Divider";
 import TripOriginIcon from "@material-ui/icons/TripOrigin";
 import { Typography } from "@material-ui/core";
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -30,12 +28,11 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "2px solid #56C62C",
   },
   textValor: {
-    '& span':{
+    "& span": {
       [theme.breakpoints.down("xs")]: {
         fontSize: ".8rem",
       },
-    }
-    
+    },
   },
   listItemIcon: {
     [theme.breakpoints.down("xs")]: {
@@ -44,29 +41,29 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     [theme.breakpoints.down("xs")]: {
-      width: '.7em'
+      width: ".7em",
     },
-  }
+  },
 }));
 
 const Valor = ({ nombre }) => {
   const classes = useStyles();
-    return (
-        <ListItem button>
-            <ListItemIcon className={classes.listItemIcon}>
-              <TripOriginIcon className={classes.icon} />
-            </ListItemIcon>
-            <ListItemText primary={nombre} className={classes.textValor} />
-          </ListItem>
-    )
-}
+  return (
+    <ListItem button>
+      <ListItemIcon className={classes.listItemIcon}>
+        <TripOriginIcon className={classes.icon} />
+      </ListItemIcon>
+      <ListItemText primary={nombre} className={classes.textValor} />
+    </ListItem>
+  );
+};
 
 export const Valores = () => {
   const classes = useStyles();
 
   return (
     <div>
-        <Typography
+      <Typography
         variant="h4"
         color="secondary"
         className={classes.titleCategorias}
@@ -74,16 +71,12 @@ export const Valores = () => {
         <span className={classes.spanTitleCategorias}>Nuestros valores</span>
       </Typography>
 
-
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
-          
-
-            <Valor nombre="Honestidad" />
-            <Valor nombre="Calidad" />
-            <Valor nombre="Responsabilidad" />
-            <Valor nombre="Trabajo en equipo" />
-
+          <Valor nombre="Honestidad" />
+          <Valor nombre="Calidad" />
+          <Valor nombre="Responsabilidad" />
+          <Valor nombre="Trabajo en equipo" />
         </List>
       </div>
     </div>

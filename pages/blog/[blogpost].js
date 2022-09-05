@@ -14,7 +14,7 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { blogApi } from "../../utils/contentfulApi";
 import Link from "next/link";
 import { CircularCoverBackdrop } from "../../components/Helpers/CircularCoverBackdrop";
-import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -83,63 +83,48 @@ const EmbeddedImg = (props) => {
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-
-      const {file} = node.data.target.fields;
+      const { file } = node.data.target.fields;
       const { contentType } = node.data.target.fields.file;
       // application/pdf
       // image/jpeg
 
-      switch(contentType) {
-        case "application/pdf" :
+      switch (contentType) {
+        case "application/pdf":
           return (
             <div>
               <p>
-                Descarga el archivo <b> {file.fileName} </b> 
-              <a href={file.url} target="_blank" style={{color: "green"}}>
-                <PictureAsPdfIcon></PictureAsPdfIcon>
-              </a>
+                Descarga el archivo <b> {file.fileName} </b>
+                <a href={file.url} target="_blank" style={{ color: "green" }}>
+                  <PictureAsPdfIcon></PictureAsPdfIcon>
+                </a>
               </p>
             </div>
-          )
-          break;
-        case "image/jpeg" :
+          );
+        case "image/jpeg":
           return (
-             node.data.target.fields.file !== undefined && (
-            <EmbeddedImg src={node.data.target.fields.file.url} />
-            ) 
-          )
+            node.data.target.fields.file !== undefined && (
+              <EmbeddedImg src={node.data.target.fields.file.url} />
+            )
+          );
           break;
         default:
-          return (
-            <p></p>
-          )
+          return <p></p>;
           break;
       }
-
     },
     [BLOCKS.UL_LIST]: (node, children) => {
-      return (
-        <ul style={{textAlign: "left"}}>
-        {children}
-      </ul>
-      )
-    }
-      ,
+      return <ul style={{ textAlign: "left" }}>{children}</ul>;
+    },
     [BLOCKS.LIST_ITEM]: (node, children) => {
       const UnTaggedChildren = documentToReactComponents(node, {
         renderNode: {
           [BLOCKS.PARAGRAPH]: (node, children) => children,
           [BLOCKS.LIST_ITEM]: (node, children) => children,
         },
-      })
+      });
 
-      return (
-        <li>
-          {UnTaggedChildren}
-        </li>
-      )
-    }
-      
+      return <li>{UnTaggedChildren}</li>;
+    },
   },
 };
 
@@ -176,10 +161,10 @@ export default function BlogpostPage({ blogpost }) {
               </p>
             </div>
             <div className={classes.documentToReactComponents}>
-            {documentToReactComponents(blogpost.informacion, options)}
+              {documentToReactComponents(blogpost.informacion, options)}
             </div>
           </>
-        ) :  (
+        ) : (
           <p>Blog no encontrado</p>
         )}
 

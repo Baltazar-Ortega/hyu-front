@@ -7,32 +7,27 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-    backdrop: {
-      zIndex: theme.zIndex.drawer + 1,
-      color: "#fff",
-    },
-  }));
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
+  },
+}));
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export const FeedbackCrearDescargable = ({state, dispatch}) => {
-
-    const classes = useStyles()
+export const FeedbackCrearDescargable = ({ state, dispatch }) => {
+  const classes = useStyles();
   return (
     <div>
       <Snackbar
         open={state.openSuccesSnackbar}
         autoHideDuration={6000}
-        onClose={() =>
-          dispatch({ type: "CERRAR_AGREGADO_SATISFACTORIO" })
-        }
+        onClose={() => dispatch({ type: "CERRAR_AGREGADO_SATISFACTORIO" })}
       >
         <Alert
-          onClose={() =>
-            dispatch({ type: "CERRAR_AGREGADO_SATISFACTORIO" })
-          }
+          onClose={() => dispatch({ type: "CERRAR_AGREGADO_SATISFACTORIO" })}
           severity="success"
         >
           Descargable agregado a la base de datos

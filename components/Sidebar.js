@@ -3,15 +3,14 @@ import { slide as Menu } from "react-burger-menu";
 import Link from "next/link";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   spanLink: {
-    display: "block"
-  }
-}))
+    display: "block",
+  },
+}));
 
 export const SideBar = () => {
-
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Menu right>

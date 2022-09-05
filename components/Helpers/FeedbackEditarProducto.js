@@ -14,24 +14,23 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { Button, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-    backdrop: {
-      zIndex: theme.zIndex.drawer + 1,
-      color: "#fff",
-    },
-  }));
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
+  },
+}));
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export const FeedbackEditarProducto = ({state, dispatch, borrar}) => {
-
-    const classes = useStyles()
+export const FeedbackEditarProducto = ({ state, dispatch, borrar }) => {
+  const classes = useStyles();
   return (
     <div>
       <Dialog
         open={state.openDialog}
-        onClose={() => dispatch({type: 'CERRAR_CONFIRMAR_ELIMINACION'})}
+        onClose={() => dispatch({ type: "CERRAR_CONFIRMAR_ELIMINACION" })}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -42,14 +41,14 @@ export const FeedbackEditarProducto = ({state, dispatch, borrar}) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={() => borrar()}
-            style={{ color: "red" }}
-            autoFocus
-          >
+          <Button onClick={() => borrar()} style={{ color: "red" }} autoFocus>
             Si
           </Button>
-          <Button onClick={() => dispatch({type: 'CERRAR_CONFIRMAR_ELIMINACION'})} color="primary" autoFocus>
+          <Button
+            onClick={() => dispatch({ type: "CERRAR_CONFIRMAR_ELIMINACION" })}
+            color="primary"
+            autoFocus
+          >
             Salir
           </Button>
         </DialogActions>
@@ -58,14 +57,10 @@ export const FeedbackEditarProducto = ({state, dispatch, borrar}) => {
       <Snackbar
         open={state.openSuccesSnackbar}
         autoHideDuration={6000}
-        onClose={() =>
-          dispatch({ type: "CERRAR_EDITADO_SATISFACTORIO" })
-        }
+        onClose={() => dispatch({ type: "CERRAR_EDITADO_SATISFACTORIO" })}
       >
         <Alert
-          onClose={() =>
-            dispatch({ type: "CERRAR_EDITADO_SATISFACTORIO" })
-          }
+          onClose={() => dispatch({ type: "CERRAR_EDITADO_SATISFACTORIO" })}
           severity="success"
         >
           Producto editado en la base de datos exitosamente
@@ -94,7 +89,7 @@ export const FeedbackEditarProducto = ({state, dispatch, borrar}) => {
           onClose={() => dispatch({ type: "CERRAR_ERROR_EDITADO" })}
           severity="error"
         >
-          Error. No se logro editar el producto. 
+          Error. No se logro editar el producto.
         </Alert>
       </Snackbar>
 
@@ -114,9 +109,12 @@ export const FeedbackEditarProducto = ({state, dispatch, borrar}) => {
       <Snackbar
         open={state.openDeletedSuccessSnackbar}
         autoHideDuration={6000}
-        onClose={() => dispatch({type: "CERRAR_ELEMENTO_ELIMINADO"})}
+        onClose={() => dispatch({ type: "CERRAR_ELEMENTO_ELIMINADO" })}
       >
-        <Alert onClose={() => dispatch({type: "CERRAR_ELEMENTO_ELIMINADO"})} severity="success">
+        <Alert
+          onClose={() => dispatch({ type: "CERRAR_ELEMENTO_ELIMINADO" })}
+          severity="success"
+        >
           Producto eliminado de la base de datos
         </Alert>
       </Snackbar>

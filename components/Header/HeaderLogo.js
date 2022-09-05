@@ -9,13 +9,12 @@ import theme from "../../src/theme";
 // Nextjs components
 import Link from "next/link";
 
-
 const useStyles = makeStyles({
   logoImg: {
     height: "120px",
     width: "80%",
-    marginTop: '10px',
-    marginBottom: '10px',
+    marginTop: "10px",
+    marginBottom: "10px",
     maxWidth: "400px",
     [theme.breakpoints.down("sm")]: {
       display: "flex",

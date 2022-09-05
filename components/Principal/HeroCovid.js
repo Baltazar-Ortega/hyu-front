@@ -13,8 +13,6 @@ import theme from "../../src/theme";
 import Link from "next/link";
 import { CircularCoverBackdrop } from "../Helpers/CircularCoverBackdrop";
 
-
-
 const useStyles = makeStyles({
   containerCovid: {
     backgroundColor: "#222E9A",
@@ -180,10 +178,7 @@ export const HeroCovid = () => {
         </Paper>
       </Container>
 
-      <CircularCoverBackdrop 
-      open={open}
-      handleClose={handleClose}
-      />      
+      <CircularCoverBackdrop open={open} handleClose={handleClose} />
     </div>
   );
 };
